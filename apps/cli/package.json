@@ -12,6 +12,8 @@
   },
   "type": "module",
   "bin": {
+    "helloglitch": "lib/bin.js",
+    "glitch": "lib/bin.js",
     "dsh": "lib/bin.js"
   },
   "files": [

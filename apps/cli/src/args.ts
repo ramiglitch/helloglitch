@@ -89,14 +89,14 @@ function rejectElectronProfile(program: Command, profile: string): void {
 /** The launcher's own help text; each app prints its own. */
 const HELP_EXAMPLES = `
 Examples:
-  dsh web                                   boot the web profile (same as: dsh --profile web)
-  dsh rescue --from-default-profile web
+  helloglitch web                                   boot the web profile (same as: helloglitch --profile web)
+  helloglitch rescue --from-default-profile web
                                             recreate rescue from the shipped web template, then boot it
-  dsh headless "run the tests"              answer one task, print the result, and exit
-  dsh tui --patch ./extra.yml               boot a custom profile with one extra overlay
-  dsh tui --resume <session>                arguments after the launcher flags reach the app
-  dsh web --help                            the web app's own flags and help
-  dsh plugin --profile tui add <package>    install a plugin into the tui profile
+  helloglitch headless "run the tests"              answer one task, print the result, and exit
+  helloglitch tui --patch ./extra.yml               boot a custom profile with one extra overlay
+  helloglitch tui --resume <session>                arguments after the launcher flags reach the app
+  helloglitch web --help                            the web app's own flags and help
+  helloglitch plugin --profile tui add <package>    install a plugin into the tui profile
 `
 
 /**
@@ -150,21 +150,21 @@ export function parseDshArgs(argv: readonly string[], version: string, manageDes
   // inferred type would be circular through its own chain.
   const program: Command = new Command()
   program
-    .name('dsh')
+    .name('helloglitch')
     .version(version, '-V, --version', 'output the version number')
-    .usage('[--profile] <name> [options] [app-args...]\n       dsh plugin --profile <name> <pnpm-args...>')
-    .description('dsh: boot a DeepSeek Harness profile — an ordered stack of plugin-bundle patch layers under your own overrides.')
+    .usage('[--profile] <name> [options] [app-args...]\n       helloglitch plugin --profile <name> <pnpm-args...>')
+    .description('helloglitch: boot a profile — an ordered stack of plugin-bundle patch layers under your own overrides. Built on DeepSeek Harness.')
     .addHelpText('after', HELP_EXAMPLES)
     .exitOverride()
     // The launcher's flags come first and end at the first token it does not
     // know; everything from there on belongs to the booted app, including
-    // its -h. `dsh -h` with no profile still prints this help, below.
+    // its -h. `helloglitch -h` with no profile still prints this help, below.
     .helpOption(false)
     .helpCommand(false)
     .allowUnknownOption()
     .passThroughOptions()
     .enablePositionalOptions()
-    .argument('[args...]', 'arguments for the booted profile\'s app (see: dsh --profile <name> --help)')
+    .argument('[args...]', 'arguments for the booted profile\'s app (see: helloglitch --profile <name> --help)')
     .option('--profile <name>', 'the profile under $DSH_HOME/profiles to boot', selectProfile)
     .option('--from-default-profile <name>', 'replace a custom profile with a fresh copy of a shipped profile template')
     .option('--patch <path>', 'extra patch-list overlay applied after the profile layer (repeatable)', collect)
@@ -211,6 +211,6 @@ export function parseDshArgs(argv: readonly string[], version: string, manageDes
     return process.exit(error instanceof CommanderError ? error.exitCode : 1)
   }
   /* v8 ignore next -- an action resolves or Commander throws */
-  if (resolved === undefined) throw new Error('dsh: no invocation resolved')
+  if (resolved === undefined) throw new Error('helloglitch: no invocation resolved')
   return resolved
 }
