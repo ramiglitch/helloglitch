@@ -1,11 +1,11 @@
 {
-  "name": "DeepSeek Harness",
-  "short_name": "DSH",
+  "name": "helloglitch",
+  "short_name": "helloglitch",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#ffffff",
+  "background_color": "#0B0B0F",
+  "theme_color": "#FF2A2A",
   "icons": [
     {
       "src": "icon-192.png",

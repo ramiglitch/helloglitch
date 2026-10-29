@@ -56,6 +56,9 @@ export { FishLogo, FISH_LOGO_PATH, FISH_LOGO_VIEWBOX } from './FishLogo.tsx'
 export { BrandWordmark } from './BrandWordmark.tsx'
 export type { BrandWordmarkProps } from './BrandWordmark.tsx'
 export {
+  BRAND_NAME, BRAND_ALT_MARK, BRAND_ALT_LOGO, BRAND_ALT_BANNER, BRAND_COLORS, BRAND_ASSETS,
+} from './brand.ts'
+export {
   PermissionIconAutoReviewMedium, PermissionIconAutoReviewRegular,
   PermissionIconFullAccessMedium, PermissionIconFullAccessRegular,
   PermissionIconReadOnlyMedium, PermissionIconReadOnlyRegular,
